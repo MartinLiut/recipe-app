@@ -17,7 +17,6 @@ class App extends Component {
     const recipe = e.target.elements.recipe.value;
     const api_call = await fetch(`http://food2fork.com/api/search?key=${API_KEY}&q=${recipe}&count=5`);
     const data = await api_call.json();
-    console.log(data);
     this.setState({recipes: data.recipes});
   }
 

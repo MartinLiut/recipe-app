@@ -11,15 +11,20 @@ const Recipes = props => (
             <div className="card-deck">
                 {props.recipes.map(recipe => {
                     return(
-                        <div className="col-md-3 pb-4">
-                            <Link to={`/recipe/${recipe.recipe_id}`}>
-                                <div class="card m-0 shadow-sm" key={recipe.recipe_id}>
-                                    <img class="card-img-top recipe_img" src={recipe.image_url} alt={recipe.title} />
-                                    <div class="card-body">
-                                        <h6 class="card-title m-0">{cutString(recipe.title)}</h6>
+                        <div className="col-md-3 pb-4" key={recipe.recipe_id}>
+                            <Link to={
+                                        {
+                                            pathname: `/recipe/${recipe.recipe_id}`,
+                                            state: {recipe: recipe.title}
+                                        }
+                                    }>
+                                <div className="card m-0 shadow-sm" key={recipe.recipe_id}>
+                                    <img className="card-img-top recipe_img" src={recipe.image_url} alt={recipe.title} />
+                                    <div className="card-body">
+                                        <h6 className="card-title m-0">{cutString(recipe.title)}</h6>
                                     </div>
-                                    <div class="card-footer p-0">
-                                        <small class="text-muted">By {recipe.publisher}</small>
+                                    <div className="card-footer p-0">
+                                        <small className="text-muted">By {recipe.publisher}</small>
                                     </div>
                                 </div>
                             </Link>
