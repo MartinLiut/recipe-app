@@ -1,10 +1,19 @@
 import React, { Component } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import './App.css';
 import Form from './components/Form';
+import NavBar from './components/NavBar';
+import Navigation from './components/Navigation';
 import Recipes from './components/Recipes';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 const API_KEY = '1c9a9adbe707aea7c6c348b453b73e9a';
+
+const martin = getMuiTheme({
+  palette: {
+    primary1Color: '#FF7733'
+  }
+});
 
 class App extends Component {
   state = {
@@ -25,20 +34,24 @@ class App extends Component {
   getRecipe = async e => {
     e.preventDefault();
     const recipe = e.target.elements.recipe.value;
-    const api_call = await fetch(`https://www.food2fork.com/api/search?key=${API_KEY}&q=${recipe}&count=5`);
-    //const api_call = await fetch(`http://food2fork.com/api/search?key=1c9a9adbe707aea7c6c348b453b73e9a&q=chicken&count=5`);
+    const api_call = await fetch(`https://www.food2fork.com/api/search?key=${API_KEY}&q=${recipe}`);
     const data = await api_call.json();
+    console.log(data);
     this.setState({recipes: data.recipes});
   }
 
   render() {
+    
+
     return (
       <div className="App">
-        <header className="App-header">
-          <Form getRecipe={this.getRecipe}/> 
-        </header>
         <main>
-          <Recipes recipes={this.state.recipes} />
+          <MuiThemeProvider muiTheme={getMuiTheme(martin)}>
+            <NavBar/>
+            <Navigation />
+            <Form getRecipe={this.getRecipe}/> 
+            <Recipes recipes={this.state.recipes} />
+          </MuiThemeProvider>
         </main>  
       </div>
     );

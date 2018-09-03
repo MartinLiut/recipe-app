@@ -1,5 +1,11 @@
-.App {
-  text-align: center;
+::-webkit-scrollbar {
+  width: 5px;
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: #ccc;
 }
 
 .App-logo {
@@ -7,12 +13,12 @@
   height: 80px;
 }
 
-.App-header {
+/*.App-header {
   background: linear-gradient(#c2c0bc, transparent);
   height: auto;
   padding: 20px;
   color: white;
-}
+}*/
 
 .App-title {
   font-size: 1.5em;
@@ -27,10 +33,17 @@
   to { transform: rotate(360deg); }
 }
 
-body {
-  height: 100vh;
-  background-image: url('./img/bg.jpg');
-  background-size: cover
+html {
+  background:
+    -webkit-linear-gradient(315deg, hsla(196.76, 97.69%, 46.38%, 1) 0%, hsla(196.76, 97.69%, 46.38%, 0) 70%),
+    -webkit-linear-gradient(65deg, hsla(176.47, 93.42%, 45.23%, 1) 10%, hsla(176.47, 93.42%, 45.23%, 0) 80%),
+    -webkit-linear-gradient(135deg, hsla(34.48, 93.94%, 45.14%, 1) 15%, hsla(34.48, 93.94%, 45.14%, 0) 80%),
+    -webkit-linear-gradient(205deg, hsla(111.18, 91.18%, 46.48%, 1) 100%, hsla(111.18, 91.18%, 46.48%, 0) 70%);
+  background:
+    linear-gradient(135deg, hsla(196.76, 97.69%, 46.38%, 1) 0%, hsla(196.76, 97.69%, 46.38%, 0) 70%),
+    linear-gradient(25deg, hsla(176.47, 93.42%, 45.23%, 1) 10%, hsla(176.47, 93.42%, 45.23%, 0) 80%),
+    linear-gradient(315deg, hsla(34.48, 93.94%, 45.14%, 1) 15%, hsla(34.48, 93.94%, 45.14%, 0) 80%),
+    linear-gradient(245deg, hsla(111.18, 91.18%, 46.48%, 1) 100%, hsla(111.18, 91.18%, 46.48%, 0) 70%);
 }
 
 .recipe_container {
@@ -49,25 +62,27 @@ body {
 
 }
 
-.input-search {
-  border: none;
-  border-bottom: 0.5px solid rgba(1, 1, 1, .7);
-  border-radius: 0px;
-  background: transparent;
-  text-align: center;
-  text-transform: uppercase;
-  font-family: 'Dosis', sans-serif;
-  letter-spacing: 3px;
-  word-spacing: 25px;
-  outline: none;
+input.input-search {
+  color: rgba(1, 1, 1, .5) !important;
 }
 
-.input-search:-webkit-autofill {
-  background-color: transparent!;
+.card {
+  transition: all .5s ease; 
+  opacity: .85;
 }
-.input-search:focus {
-  background: transparent;
-  outline: none;
-  border-color: transparent;
-  box-shadow: none;
+.card:hover {
+  transform: scale(1.035);
+  opacity: .9;
+}
+
+input:-webkit-autofill {
+  background-color: transparent !important; 
+}
+
+hr {
+  border-color: rgba(1, 1, 1, .2) !important;
+}
+
+.bottom-navigation {
+  background: rgba(1, 1, 1, .15) !important;
 }

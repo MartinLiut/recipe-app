@@ -1,39 +1,81 @@
-import React from 'react';
+import React, {Component} from 'react';
+import Card from 'material-ui/Card/Card';
+import CardTitle from 'material-ui/Card/CardTitle';
+import CardHeader from 'material-ui/Card/CardHeader';
+import CardMedia from 'material-ui/Card/CardMedia';
+import GridList from 'material-ui/GridList/GridList';
 import {Link} from 'react-router-dom';
+import RaisedButton  from 'material-ui/RaisedButton';
+import Favorite from 'material-ui/svg-icons/action/favorite';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
+import Snackbar from 'material-ui/Snackbar';
 
 const cutString = str => {
-    return str.length > 20 ? str.substring(0, 20) + '...' : str;
+    return str.length > 19 ? str.substring(0, 19) + '...' : str;
 }
 
-const Recipes = props => (
-    <div className="container recipe_container">
-        <div className="row">
-            <div className="card-deck">
-                {props.recipes.map(recipe => {
-                    return(
-                        <div className="col-md-3 pb-4" key={recipe.recipe_id}>
-                            <Link to={
-                                        {
-                                            pathname: `/recipe/${recipe.recipe_id}`,
-                                            state: {recipe: recipe.title}
-                                        }
-                                    }>
-                                <div className="card m-0 shadow-sm" key={recipe.recipe_id}>
-                                    <img className="card-img-top recipe_img" src={recipe.image_url} alt={recipe.title} />
-                                    <div className="card-body">
-                                        <h6 className="card-title m-0">{cutString(recipe.title)}</h6>
-                                    </div>
-                                    <div className="card-footer p-0">
-                                        <small className="text-muted">By {recipe.publisher}</small>
-                                    </div>
-                                </div>
-                            </Link>
-                        </div>
-                    );
-                })} 
+const style = {
+    position: 'absolute',
+    right: '5px',
+    top: '5px',
+}
+
+
+
+class Recipes extends Component {
+    state = { 
+        message: 'Added to favorites',
+        open: false,
+    }
+
+    addFavorite = e => {
+        console.log(e.target);
+        this.setState({open: true,});
+    }
+
+    handleRequestClose = () => {
+        this.setState({
+            open: false,
+        });
+    };
+
+    render() { 
+        return ( 
+            <div style={{width: '100%'}}>
+                <GridList cols={5} cellHeight={300} style={{margin: '0px'}}>
+                    {this.props.recipes.map(recipe => {
+                        return(
+                            <Card key={recipe.recipe_id} className="card" key={recipe.recipe_id} expandable='true' style={{margin: '3px'}}>
+                                <CardHeader title={<Link to={
+                                    {pathname: `/recipe/${recipe.recipe_id}`,
+                                    state: {recipe: recipe.title}
+                                    }}>{cutString(recipe.title)}</Link>} subtitle={`Rank: ${recipe.social_rank.toFixed(2)}`} avatar={recipe.image_url} style={{padding: '7px'}}>
+                                    <FloatingActionButton style={style} mini={true} onClick={(e) => this.addFavorite(e)} >
+                                        <Favorite />
+                                    </FloatingActionButton>
+                                </CardHeader>
+                                <Link to={
+                                        {pathname: `/recipe/${recipe.recipe_id}`,
+                                        state: {recipe: recipe.title}
+                                        }}>
+                                    <CardMedia overlay={<CardTitle subtitle={`By ${recipe.publisher}`} expandable={true} actAsExpander={true} />}>
+                                        <img src={recipe.image_url} alt="" style={{maxHeight: '180px'}} />
+                                    </CardMedia>
+                                </Link>
+                            </Card>
+                        );
+                    })} 
+                    <Snackbar
+                        open={this.state.open}
+                        message={this.state.message}
+                        action="undo"
+                        autoHideDuration={3000}
+                        onRequestClose={this.handleRequestClose}
+                        />
+                </GridList>
             </div>
-        </div>
-    </div>
-)
+        );
+    }
+}
  
 export default Recipes;
