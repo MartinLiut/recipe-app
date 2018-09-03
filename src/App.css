@@ -1,0 +1,73 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background: linear-gradient(#c2c0bc, transparent);
+  height: auto;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+body {
+  height: 100vh;
+  background-image: url('./img/bg.jpg');
+  background-size: cover
+}
+
+.recipe_container {
+  margin: 30px auto;
+  background-color: rgba(255, 255, 255, .5);
+  padding: 20px;
+}
+
+.recipe_img {
+  max-height: 175px;
+}
+
+.card-deck Link, 
+.card-deck a {
+  text-decoration: none;
+
+}
+
+.input-search {
+  border: none;
+  border-bottom: 0.5px solid rgba(1, 1, 1, .7);
+  border-radius: 0px;
+  background: transparent;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: 'Dosis', sans-serif;
+  letter-spacing: 3px;
+  word-spacing: 25px;
+  outline: none;
+}
+
+.input-search:-webkit-autofill {
+  background-color: transparent!;
+}
+.input-search:focus {
+  background: transparent;
+  outline: none;
+  border-color: transparent;
+  box-shadow: none;
+}
