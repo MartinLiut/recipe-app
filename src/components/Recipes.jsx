@@ -5,10 +5,10 @@ import CardHeader from 'material-ui/Card/CardHeader';
 import CardMedia from 'material-ui/Card/CardMedia';
 import GridList from 'material-ui/GridList/GridList';
 import {Link} from 'react-router-dom';
-import RaisedButton  from 'material-ui/RaisedButton';
 import Favorite from 'material-ui/svg-icons/action/favorite';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import Snackbar from 'material-ui/Snackbar';
+import Grid from '@material-ui/core/Grid';
 
 const cutString = str => {
     return str.length > 19 ? str.substring(0, 19) + '...' : str;
@@ -41,7 +41,7 @@ class Recipes extends Component {
 
     render() { 
         return ( 
-            <div style={{width: '100%'}}>
+            <Grid container spacing={16}>
                 <GridList cols={5} cellHeight={300} style={{margin: '0px'}}>
                     {this.props.recipes.map(recipe => {
                         return(
@@ -73,7 +73,7 @@ class Recipes extends Component {
                         onRequestClose={this.handleRequestClose}
                         />
                 </GridList>
-            </div>
+            </Grid>
         );
     }
 }

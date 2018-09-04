@@ -8,31 +8,6 @@
   background-color: #ccc;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-/*.App-header {
-  background: linear-gradient(#c2c0bc, transparent);
-  height: auto;
-  padding: 20px;
-  color: white;
-}*/
-
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
 html {
   background:
     -webkit-linear-gradient(315deg, hsla(196.76, 97.69%, 46.38%, 1) 0%, hsla(196.76, 97.69%, 46.38%, 0) 70%),
@@ -85,4 +60,20 @@ hr {
 
 .bottom-navigation {
   background: rgba(1, 1, 1, .15) !important;
+}
+
+.form-container {
+  width: 50%;
+  margin: 10px auto;
+  border-radius: 10px;
+  overflow: hidden;
+  min-width: 500px;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 100px;
+  background-image: url('./img/footer.svg');
 }

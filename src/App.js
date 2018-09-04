@@ -3,6 +3,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import './App.css';
 import Form from './components/Form';
 import NavBar from './components/NavBar';
+import Footer from './components/Footer';
 import Navigation from './components/Navigation';
 import Recipes from './components/Recipes';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
@@ -48,11 +49,14 @@ class App extends Component {
         <main>
           <MuiThemeProvider muiTheme={getMuiTheme(martin)}>
             <NavBar/>
-            <Navigation />
-            <Form getRecipe={this.getRecipe}/> 
+            <div className="form-container">
+              <Navigation />
+              <Form getRecipe={this.getRecipe}/> 
+            </div>
             <Recipes recipes={this.state.recipes} />
           </MuiThemeProvider>
         </main>  
+        <Footer />
       </div>
     );
   }
