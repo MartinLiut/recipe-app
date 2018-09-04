@@ -45,19 +45,15 @@ class App extends Component {
     
 
     return (
-      <div className="App">
-        <main>
-          <MuiThemeProvider muiTheme={getMuiTheme(martin)}>
-            <NavBar/>
-            <div className="form-container">
-              <Navigation />
-              <Form getRecipe={this.getRecipe}/> 
-            </div>
-            <Recipes recipes={this.state.recipes} />
-          </MuiThemeProvider>
-        </main>  
+      <MuiThemeProvider muiTheme={getMuiTheme(martin)}>
+        <NavBar/>
+        <div className="form-container">
+          <Navigation />
+          <Form getRecipe={this.getRecipe}/> 
+        </div>
+        <Recipes recipes={this.state.recipes} />
         <Footer />
-      </div>
+      </MuiThemeProvider>
     );
   }
 }

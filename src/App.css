@@ -8,6 +8,12 @@
   background-color: #ccc;
 }
 
+a { 
+  text-decoration: none; 
+  color: rgba(1, 1, 1, .7);
+  font-weight: bolder;
+}
+
 html {
   background:
     -webkit-linear-gradient(315deg, hsla(196.76, 97.69%, 46.38%, 1) 0%, hsla(196.76, 97.69%, 46.38%, 0) 70%),
@@ -65,15 +71,15 @@ hr {
 .form-container {
   width: 50%;
   margin: 10px auto;
-  border-radius: 10px;
+  border-radius: 5px;
   overflow: hidden;
   min-width: 500px;
 }
 
 footer {
-  position: absolute;
+  position: relative;
   bottom: 0;
-  width: 100%;
+  display: block;
   padding: 100px;
   background-image: url('./img/footer.svg');
 }
