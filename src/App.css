@@ -83,3 +83,7 @@ footer {
   padding: 100px;
   background-image: url('./img/footer.svg');
 }
+
+.MuiButton-sizeLarge-244 {
+  margin: 5px;
+}
