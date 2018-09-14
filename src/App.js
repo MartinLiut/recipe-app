@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import injectTapEventPlugin from 'react-tap-event-plugin';
 import './App.css';
 import Form from './components/Form';
 import NavBar from './components/NavBar';
@@ -9,7 +10,7 @@ import Recipes from './components/Recipes';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 const API_KEY = '1c9a9adbe707aea7c6c348b453b73e9a';
-
+injectTapEventPlugin();
 const martin = getMuiTheme({
   palette: {
     primary1Color: '#FF7733'

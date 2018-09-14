@@ -52,7 +52,7 @@ input.input-search {
   opacity: .85;
 }
 .card:hover {
-  transform: scale(1.035);
+  /*transform: scale(1.035);*/
   opacity: .9;
 }
 
@@ -86,4 +86,9 @@ footer {
 
 .MuiButton-sizeLarge-244 {
   margin: 5px;
+}
+
+header .title, .PersistentDrawer-drawerHeader-10 .title {
+  font-family: 'Pacifico', cursive;
+  font-size: 2em;
 }

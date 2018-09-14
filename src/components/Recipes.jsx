@@ -19,8 +19,6 @@ const style = {
     top: '5px',
 }
 
-
-
 class Recipes extends Component {
     state = { 
         message: 'Added to favorites',
@@ -43,11 +41,19 @@ class Recipes extends Component {
             <GridList cols={5} cellHeight={300} style={{margin: '0px'}}>
                 {this.props.recipes.map(recipe => {
                     return(
-                        <Card key={recipe.recipe_id} className="card" key={recipe.recipe_id} expandable='true' style={{margin: '3px'}}>
-                            <CardHeader title={<Link to={
-                                {pathname: `/recipe/${recipe.recipe_id}`,
-                                state: {recipe: recipe.title}
-                                }}>{cutString(recipe.title)}</Link>} subtitle={`Rank: ${recipe.social_rank.toFixed(2)}`} avatar={recipe.image_url} style={{padding: '7px'}}>
+                        <Card 
+                            key={recipe.recipe_id} 
+                            className="card" 
+                            key={recipe.recipe_id} 
+                            style={{margin: '3px'}}>
+                            <CardHeader 
+                                title={<Link to={
+                                        {pathname: `/recipe/${recipe.recipe_id}`,
+                                        state: {recipe: recipe.title}
+                                        }}>{cutString(recipe.title)}</Link>} 
+                                subtitle={`Rank: ${recipe.social_rank.toFixed(2)}`} 
+                                avatar={recipe.image_url} 
+                                style={{padding: '7px'}}>
                                 <FloatingActionButton style={style} mini={true} onClick={(e) => this.addFavorite(e)} >
                                     <Favorite />
                                 </FloatingActionButton>
