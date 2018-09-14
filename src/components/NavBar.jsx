@@ -9,9 +9,7 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
-import MenuItem from '@material-ui/core/MenuItem';
 import Typography from '@material-ui/core/Typography';
-import TextField from '@material-ui/core/TextField';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -20,6 +18,7 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import IconLocationOn from 'material-ui/svg-icons/communication/location-on';
 import Refresh from 'material-ui/svg-icons/navigation/refresh';
 import Favorite from 'material-ui/svg-icons/action/favorite';
+import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 
 const drawerWidth = 340;
 
@@ -125,38 +124,42 @@ class PersistentDrawer extends React.Component {
         variant="temporary"
         anchor={anchor}
         open={open}
+        docked={true}
         classes={{
           paper: classes.drawerPaper,
         }}
       >
-        <div className={classes.drawerHeader}>
-          <IconButton onClick={this.handleDrawerClose}>
-            {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
-          </IconButton>
-        </div>
-        <Divider />
-        <List component="nav">
-          <ListItem button selected>
-            <ListItemIcon>
-              <Refresh></Refresh>
-            </ListItemIcon>
-            <ListItemText inset primary="Recents" />
-          </ListItem>
-          <Divider />
-          <ListItem button>
-            <ListItemIcon>
-              <Favorite></Favorite>
-            </ListItemIcon>
-            <ListItemText inset primary="Favorits" />
-          </ListItem>
-          <Divider />
-          <ListItem button>
-            <ListItemIcon>
-              <IconLocationOn></IconLocationOn>
-            </ListItemIcon>
-            <ListItemText inset primary="Nearby" />
-          </ListItem>
-        </List>
+        <ClickAwayListener onClickAway={this.handleDrawerClose}>
+          <div className={classes.drawerHeader} style={{justifyContent: 'space-between', paddingLeft:'2em'}}>
+            <Typography variant="title" align="left" className="title">Menu</Typography>
+            <IconButton onClick={this.handleDrawerClose}>
+              {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
+            </IconButton>
+          </div>
+          <List component="nav">
+            <ListItem button selected>
+              <ListItemIcon>
+                <Refresh></Refresh>
+              </ListItemIcon>
+              <ListItemText inset primary="Recents" />
+            </ListItem>
+            <Divider />
+            <ListItem button>
+              <ListItemIcon>
+                <Favorite></Favorite>
+              </ListItemIcon>
+              <ListItemText inset primary="Favorits" />
+            </ListItem>
+            <Divider />
+            <ListItem button>
+              <ListItemIcon>
+                <IconLocationOn></IconLocationOn>
+              </ListItemIcon>
+              <ListItemText inset primary="Nearby" />
+            </ListItem>
+          </List>
+          <Typography variant="caption" align="right" style={{position:'absolute', right:'10px', bottom:'10px'}}>by Martin Liut</Typography>
+        </ClickAwayListener>
       </Drawer>
     );
 
@@ -169,7 +172,7 @@ class PersistentDrawer extends React.Component {
             className={classNames(classes.appBar, {
               [classes.appBarShift]: open,
               [classes[`appBarShift-left`]]: open,
-            })}
+            })} style={{backgroundColor:'transparent'}}
           >
             <Toolbar disableGutters={!open}>
               <IconButton
@@ -180,8 +183,8 @@ class PersistentDrawer extends React.Component {
               >
                 <MenuIcon />
               </IconButton>
-              <Typography variant="title" color="inherit" noWrap>
-                Persistent drawer
+              <Typography variant="title" color="inherit" className="title">
+                Recipes search
               </Typography>
             </Toolbar>
           </AppBar>
