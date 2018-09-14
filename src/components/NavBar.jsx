@@ -17,10 +17,7 @@ const styles = {
 
 class SwipeableTemporaryDrawer extends React.Component {
   state = {
-    top: false,
-    left: false,
-    bottom: false,
-    right: false,
+    left: false
   };
 
   toggleDrawer = (side, open) => () => {
@@ -51,9 +48,6 @@ class SwipeableTemporaryDrawer extends React.Component {
     return (
       <div>
         <Button onClick={this.toggleDrawer('left', true)}>Open Left</Button>
-        <Button onClick={this.toggleDrawer('right', true)}>Open Right</Button>
-        <Button onClick={this.toggleDrawer('top', true)}>Open Top</Button>
-        <Button onClick={this.toggleDrawer('bottom', true)}>Open Bottom</Button>
         <SwipeableDrawer
           open={this.state.left}
           onClose={this.toggleDrawer('left', false)}
@@ -64,51 +58,6 @@ class SwipeableTemporaryDrawer extends React.Component {
             role="button"
             onClick={this.toggleDrawer('left', false)}
             onKeyDown={this.toggleDrawer('left', false)}
-          >
-            {sideList}
-          </div>
-        </SwipeableDrawer>
-        <SwipeableDrawer
-          anchor="top"
-          open={this.state.top}
-          onClose={this.toggleDrawer('top', false)}
-          onOpen={this.toggleDrawer('top', true)}
-        >
-          <div
-            tabIndex={0}
-            role="button"
-            onClick={this.toggleDrawer('top', false)}
-            onKeyDown={this.toggleDrawer('top', false)}
-          >
-            {fullList}
-          </div>
-        </SwipeableDrawer>
-        <SwipeableDrawer
-          anchor="bottom"
-          open={this.state.bottom}
-          onClose={this.toggleDrawer('bottom', false)}
-          onOpen={this.toggleDrawer('bottom', true)}
-        >
-          <div
-            tabIndex={0}
-            role="button"
-            onClick={this.toggleDrawer('bottom', false)}
-            onKeyDown={this.toggleDrawer('bottom', false)}
-          >
-            {fullList}
-          </div>
-        </SwipeableDrawer>
-        <SwipeableDrawer
-          anchor="right"
-          open={this.state.right}
-          onClose={this.toggleDrawer('right', false)}
-          onOpen={this.toggleDrawer('right', true)}
-        >
-          <div
-            tabIndex={0}
-            role="button"
-            onClick={this.toggleDrawer('right', false)}
-            onKeyDown={this.toggleDrawer('right', false)}
           >
             {sideList}
           </div>
