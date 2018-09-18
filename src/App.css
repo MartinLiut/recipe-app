@@ -49,11 +49,12 @@ input.input-search {
 
 .card {
   transition: all .5s ease; 
-  opacity: .85;
+  /*opacity: .85;*/
 }
 .card:hover {
-  /*transform: scale(1.035);*/
-  opacity: .9;
+  /*transform: scale(1.035);
+  opacity: .9;*/
+  margin: 0px;
 }
 
 input:-webkit-autofill {

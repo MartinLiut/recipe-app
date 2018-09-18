@@ -141,14 +141,14 @@ class PersistentDrawer extends React.Component {
               <ListItemIcon>
                 <Refresh></Refresh>
               </ListItemIcon>
-              <ListItemText inset primary="Recents" />
+              <ListItemText inset primary="Recents" subheading />
             </ListItem>
             <Divider />
             <ListItem button>
               <ListItemIcon>
                 <Favorite></Favorite>
               </ListItemIcon>
-              <ListItemText inset primary="Favorits" />
+              <ListItemText inset primary="Favorits" subheading />
             </ListItem>
             <Divider />
             <ListItem button>
