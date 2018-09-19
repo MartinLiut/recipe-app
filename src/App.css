@@ -92,4 +92,7 @@ footer {
 header .title, .PersistentDrawer-drawerHeader-10 .title {
   font-family: 'Pacifico', cursive;
   font-size: 2em;
+  color: rgba(255, 255, 255, .95)
 }
+
+.item * { color: rgba(255, 255, 255, .95) !important }

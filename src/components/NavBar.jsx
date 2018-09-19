@@ -19,6 +19,7 @@ import IconLocationOn from 'material-ui/svg-icons/communication/location-on';
 import Refresh from 'material-ui/svg-icons/navigation/refresh';
 import Favorite from 'material-ui/svg-icons/action/favorite';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
+import image from "./../img/sidebar.jpg";
 
 const drawerWidth = 340;
 
@@ -101,6 +102,20 @@ const styles = theme => ({
   },
 });
 
+const stylesSideBar = {
+  top: 0,
+  left: 0,
+  width: '100%',
+  height: '100%',
+  zIndex: '-1',
+  display: 'block',
+  position: 'absolute',
+  backgroundSize: 'cover',
+  backgroundPosition: 'center',
+  backgroundImage: "url(" + image + ")",
+  filter: 'brightness(0.6)'
+}
+
 class PersistentDrawer extends React.Component {
   state = {
     open: false,
@@ -124,7 +139,6 @@ class PersistentDrawer extends React.Component {
         variant="temporary"
         anchor={anchor}
         open={open}
-        docked={true}
         classes={{
           paper: classes.drawerPaper,
         }}
@@ -137,29 +151,37 @@ class PersistentDrawer extends React.Component {
             </IconButton>
           </div>
           <List component="nav">
-            <ListItem button selected>
+            <ListItem button selected className="item" >
               <ListItemIcon>
                 <Refresh></Refresh>
               </ListItemIcon>
-              <ListItemText inset primary="Recents" subheading />
+              <ListItemText inset primary="Recents" />
             </ListItem>
             <Divider />
-            <ListItem button>
+            <ListItem button className="item">
               <ListItemIcon>
                 <Favorite></Favorite>
               </ListItemIcon>
-              <ListItemText inset primary="Favorits" subheading />
+              <ListItemText inset primary="Favorits" />
             </ListItem>
             <Divider />
-            <ListItem button>
+            <ListItem button className="item">
               <ListItemIcon>
                 <IconLocationOn></IconLocationOn>
               </ListItemIcon>
-              <ListItemText inset primary="Nearby" />
+              <ListItemText inset primary="Nearby"
+               />
             </ListItem>
           </List>
           <Typography variant="caption" align="right" style={{position:'absolute', right:'10px', bottom:'10px'}}>by Martin Liut</Typography>
         </ClickAwayListener>
+        {console.log(image)}
+        {image !== undefined ? (
+          <div
+            style={ stylesSideBar }
+            id="jaja"
+          />
+        ) : null}
       </Drawer>
     );
 
