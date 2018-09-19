@@ -59,7 +59,9 @@ class App extends Component {
           <Navigation />
           <Form getRecipe={this.getRecipe}/> 
         </div>
-        <Recipes recipes={this.state.recipes} />
+        <main>  
+          <Recipes recipes={this.state.recipes} />
+        </main>
         <Footer />
       </MuiThemeProvider>
     );

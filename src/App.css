@@ -27,20 +27,13 @@ html {
     linear-gradient(245deg, hsla(111.18, 91.18%, 46.48%, 1) 100%, hsla(111.18, 91.18%, 46.48%, 0) 70%);
 }
 
-.recipe_container {
-  margin: 30px auto;
-  background-color: rgba(255, 255, 255, .5);
-  padding: 20px;
-}
-
 .recipe_img {
-  max-height: 175px;
+  max-height: 180px;
 }
 
 .card-deck Link, 
 .card-deck a {
   text-decoration: none;
-
 }
 
 input.input-search {
@@ -55,6 +48,10 @@ input.input-search {
   /*transform: scale(1.035);
   opacity: .9;*/
   margin: 0px;
+}
+
+.card:hover .card{
+  opacity: .85;
 }
 
 input:-webkit-autofill {
@@ -96,3 +93,4 @@ header .title, .PersistentDrawer-drawerHeader-10 .title {
 }
 
 .item * { color: rgba(255, 255, 255, .95) !important }
+

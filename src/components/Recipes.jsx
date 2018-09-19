@@ -3,8 +3,7 @@ import Card from 'material-ui/Card/Card';
 import CardTitle from 'material-ui/Card/CardTitle';
 import CardHeader from 'material-ui/Card/CardHeader';
 import CardMedia from 'material-ui/Card/CardMedia';
-import GridList from 'material-ui/GridList/GridList';
-import {Link} from 'react-router-dom';
+import Grid from '@material-ui/core/Grid';import {Link} from 'react-router-dom';
 import Favorite from 'material-ui/svg-icons/action/favorite';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import Snackbar from 'material-ui/Snackbar';
@@ -38,35 +37,36 @@ class Recipes extends Component {
 
     render() { 
         return ( 
-            <GridList cols={5} cellHeight={300} style={{margin: '0px'}}>
+            <Grid container style={{ padding: '0px 15%', backgroundColor:'rgba(255, 255, 255, .4)'}} >
                 {this.props.recipes.map(recipe => {
                     return(
-                        <Card 
-                            key={recipe.recipe_id} 
-                            className="card" 
-                            key={recipe.recipe_id} 
-                            style={{margin: '3px'}}>
-                            <CardHeader 
-                                title={<Link to={
+                        <Grid item key={recipe.recipe_id} sm={6} md={4} lg={3}>
+                            <Card 
+                                className="card" 
+                                style={{margin: '10px'}}
+                                >
+                                <CardHeader 
+                                    title={<Link to={
+                                            {pathname: `/recipe/${recipe.recipe_id}`,
+                                            state: {recipe: recipe.title}
+                                            }}>{cutString(recipe.title)}</Link>} 
+                                    subtitle={`Rank: ${recipe.social_rank.toFixed(2)}`} 
+                                    avatar={recipe.image_url} 
+                                    style={{padding: '7px'}}>
+                                    <FloatingActionButton style={style} mini={true} onClick={(e) => this.addFavorite(e)} >
+                                        <Favorite />
+                                    </FloatingActionButton>
+                                </CardHeader>
+                                <Link to={
                                         {pathname: `/recipe/${recipe.recipe_id}`,
                                         state: {recipe: recipe.title}
-                                        }}>{cutString(recipe.title)}</Link>} 
-                                subtitle={`Rank: ${recipe.social_rank.toFixed(2)}`} 
-                                avatar={recipe.image_url} 
-                                style={{padding: '7px'}}>
-                                <FloatingActionButton style={style} mini={true} onClick={(e) => this.addFavorite(e)} >
-                                    <Favorite />
-                                </FloatingActionButton>
-                            </CardHeader>
-                            <Link to={
-                                    {pathname: `/recipe/${recipe.recipe_id}`,
-                                    state: {recipe: recipe.title}
-                                    }}>
-                                <CardMedia overlay={<CardTitle subtitle={`By ${recipe.publisher}`} expandable={true} actAsExpander={true} />}>
-                                    <img src={recipe.image_url} alt="" style={{maxHeight: '180px'}} />
-                                </CardMedia>
-                            </Link>
-                        </Card>
+                                        }}>
+                                    <CardMedia overlay={<CardTitle subtitle={`By ${recipe.publisher}`} expandable={true} actAsExpander={true} />}>
+                                        <img src={recipe.image_url} alt="" style={{maxHeight: '150px'}} />
+                                    </CardMedia>
+                                </Link>
+                            </Card>
+                        </Grid>
                     );
                 })} 
                 <Snackbar
@@ -76,7 +76,7 @@ class Recipes extends Component {
                     autoHideDuration={3000}
                     onRequestClose={this.handleRequestClose}
                     />
-            </GridList>
+            </Grid>
         );
     }
 }
