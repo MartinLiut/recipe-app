@@ -175,7 +175,6 @@ class PersistentDrawer extends React.Component {
           </List>
           <Typography variant="caption" align="right" style={{position:'absolute', right:'10px', bottom:'10px'}}>by Martin Liut</Typography>
         </ClickAwayListener>
-        {console.log(image)}
         {image !== undefined ? (
           <div
             style={ stylesSideBar }
